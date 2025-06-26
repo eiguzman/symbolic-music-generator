@@ -47,7 +47,7 @@ The following parameters and their selected arguments are described below:
 | `num_samlpes` | Number of MIDI files to generate | 1 `or` 3 |
 | `max_notes_per_time` | Maximum chord size | 3 |
 
-This model also uses the folling variable values:
+This model also uses the following variable values:
 
 | Variable | Description | Value |
 | -------- | ----------- | ----- |
@@ -354,7 +354,7 @@ The following parameters and their selected arguments have changed compared to t
 | --------- | ----------- | -------- |
 | `input_dim` | Deprecated, is now `self._to_linear` | 256 * 8 * 25 |
 
-This model also chaged the folling variable values:
+This model also chaged the following variable values:
 
 | Variable | Description | Value |
 | -------- | ----------- | ----- |
@@ -363,7 +363,7 @@ This model also chaged the folling variable values:
 
 ### Code
 ```python
-# Steps 1, 2, 4, and 7 are unmodified, and are not reproduced here for simplicity
+# Steps 1, 2, and 4 are unmodified, and are not reproduced here for simplicity
 
 # 3. Define 2D Convolutional Encoder with BatchNorm and Dropout
 class ConvEncoder(nn.Module):
@@ -504,9 +504,7 @@ if best_model_state is not None:
 
 ### Music Generation
 ```python
-import numpy as np
-import pretty_midi
-
+# 7. Generate new music with note durations
 def generate_music_with_repetition_control(model, latent_dim, num_samples=1, seq_length=400, max_notes_per_time=3):
     threshold= 0.04
     max_history = 4  # number of previous notes to compare
